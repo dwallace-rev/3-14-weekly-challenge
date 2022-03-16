@@ -31,6 +31,34 @@ export default class LinkedList {
             current.next = newNode;
         }
     }
+
+    printList(){
+        let str = "";
+        if (!this.head){
+            return "List is empty.";
+        } else {
+            let current:ListNode = this.head;
+            while (current.next){
+                str += current.data.toString() + ", ";
+                current = current.next;
+            }
+            str += current.data.toString();
+        }
+        return str;
+    }
+
+    clearList(){
+        if (!this.head){
+            return "List already empty.";
+        } else {
+            let current:ListNode = this.head;
+            while (current.next){
+                current.data = null;
+                current = current.next;
+            }
+            this.head = null;
+        }
+    }
 }
 
 
@@ -66,4 +94,6 @@ B.addNode(1);
 B.addNode(8);
 B.addNode(10);
 
+console.log(A.printList());
+console.log(B.printList());
 console.log(findIntersect(A, B));
